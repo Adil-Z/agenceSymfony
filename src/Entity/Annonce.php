@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +24,9 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min=10, minMessage = "Titre trop court"
+     * )
      */
     private $title;
 
@@ -33,11 +37,13 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
      */
     private $image;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("int", message="Votre prix doit être un nombre entier")
      */
     private $price;
 

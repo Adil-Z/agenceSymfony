@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Symfony{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <h1>Formulaire de création</h1>
+    <section class="row">
+        <div class="col-6">
+            {{ form_start(form) }}
+                {{ form_widget(form)}}
+
+                <button type="submit" class="btn btn-success">
+                  {% if edit_mode %}
+                        Mettre à jour
+                    {% else %}
+                        Ajouter l'annonce
+                    {% endif %}
+                
+                </button>
+            {{ form_end(form) }}  
+        </div> 
+    </section>
+ 
+{% endblock %}

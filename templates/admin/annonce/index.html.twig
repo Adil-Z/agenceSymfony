@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Symfony{% endblock %}
+
+{% block body %}
+    <h1>Votre espace d'administration</h1>
+    <table class="mt-4 table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Titre de l'annonce</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Prix</th>
+                <th scope="col">date</th>
+            </tr>
+        </thead>
+    {% for annonce in annonces %}
+        <tbody>
+            <tr class="table-light">
+                <th scope="row">{{annonce.title}}</th>
+                <td>{{annonce.city}}</td>
+                <td>{{annonce.price | number_format(0, '', ' ')}}€</td>
+                <td>{{annonce.createdAt | date('d/m/Y') }}</td>
+                <td><a href="{{path('admin.annonce.edit',{id: annonce.id}) }}" class="btn btn-danger btn-sm">Edit</a></td>
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+    <a href="{{path('admin.annonce.create')}}" class="btn btn-link"> Créer une nouvelle annonce</a>
+{% endblock %}
