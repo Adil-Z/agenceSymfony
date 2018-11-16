@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence Symfony{% endblock %}
+
+{% block body %}
+    <section class="annonce">
+    <h1>{{annonce.title}}</h1>
+        <article>
+            <img src="{{annonce.image}}" alt=""><br>
+            <small>{{annonce.createdAT | date('d M Y')}}</small>
+            <p>{{annonce.description}}</p>
+            <p>Location : <span>{{annonce.city}}</span></p>
+            <p>{{annonce.price | number_format(0, '', ' ')}}€</p>
+            <a href="{{ path('annonce.index') }}" class="btn btn-secondary">Retour aux annonces</a>
+            <hr>
+        </article> 
+    </section>
+{% endblock %}
